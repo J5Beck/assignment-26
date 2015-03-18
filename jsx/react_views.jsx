@@ -2,26 +2,26 @@ jb.views={};
 
 (function(views){
 
-  var PageOne = React.createClass({displayName: "PageOne",
+  var PageOne = React.createClass({
     render: function() {
-      return React.createElement("div", {class: "showing"}, "Page One (1)")
+      return <div class="showing">Page One (1)</div>
     }
   });
 
-  var PageTwo = React.createClass({displayName: "PageTwo",
+  var PageTwo = React.createClass({
     render: function() {
-      return React.createElement("div", {class: "showing"}, "Page Two (2)")
+      return <div class="showing">Page Two (2)</div>
     }
   });
 
-  var PgView = React.createClass({displayName: "PgView",
+  var PgView = React.createClass({
 
     getView: function(show) {
       if (show === "one") {
-        return React.createElement(PageOne, null)
+        return <PageOne/>
       }
       else if (show === "two") {
-        return React.createElement(PageTwo, null)
+        return <PageTwo/>
       }
     },
 
@@ -32,13 +32,13 @@ jb.views={};
     render: function() {
       var showing = this.getView(this.props.show);
       return (
-        React.createElement("div", null, 
-          React.createElement("div", null, 
-            React.createElement("button", {onClick: this.onNav.bind(this,"one")}, "Page One"), 
-            React.createElement("button", {onClick: this.onNav.bind(this,"two")}, "Page Two")
-          ), 
-          React.createElement("div", {class: "showing"}, showing)
-        )
+        <div>
+          <div>
+            <button onClick={this.onNav.bind(this,"one")}>Page One</button>
+            <button onClick={this.onNav.bind(this,"two")}>Page Two</button>
+          </div>
+          <div class="showing">{showing}</div>
+        </div>
       );
     }
 
